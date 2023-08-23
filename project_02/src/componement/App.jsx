@@ -15,8 +15,8 @@ function App() {
     setIputText('');
   }
 
-  const funClick = (event) => {
-    setItems(Items.filter((value, index) => (index).toString() !== event.target.id))
+  const funClick = (id) => {
+    setItems(Items.filter((value, index) => index !== id))
   }
 
 

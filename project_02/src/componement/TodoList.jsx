@@ -13,7 +13,7 @@ function TodoList(props){
         textDecoration: finishTodo ? 'line-through' : 'none'
     }
 
-    return <li onClick={change} style={liStyle} onDoubleClick={props.funcClick} id={props.id}>{props.todo}</li>;
+    return <li onClick={change} style={liStyle} onDoubleClick={() => {props.funcClick(props.id)}}>{props.todo}</li>;
 }
 
 export default TodoList;
