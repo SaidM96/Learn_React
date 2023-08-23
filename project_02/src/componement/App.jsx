@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TodoList from "./TodoList";
 
 function App() {
 
@@ -11,7 +12,6 @@ function App() {
 
   function addItem(){
     setItems(prevValue => {return [InputText,...prevValue]});
-    setIputText("");
   }
 
 
@@ -21,7 +21,7 @@ function App() {
         <h1>To-Do List</h1>
       </div>
       <div className="form">
-        <input type="text" onChange={onChange}/>
+        <input type="text" onChange={onChange} />
         <button onClick={addItem}>
           <span>Add</span>
         </button>
@@ -29,7 +29,11 @@ function App() {
       <div>
         <ul>
         {
-          Items.map(item => <li>{item}</li>)
+          Items.map(item => {
+          if (item !== "")
+            return <TodoList todo={item} />;
+          return <></>
+          })
         }
         </ul>
       </div>
