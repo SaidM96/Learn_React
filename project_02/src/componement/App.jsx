@@ -7,11 +7,16 @@ function App() {
   const [InputText ,setIputText] = useState("");
 
   function onChange(event){
-    setIputText(event.target.value);
+    if (event.target.value !== "") setIputText(event.target.value);
   }
 
   function addItem(){
     setItems(prevValue => {return [InputText,...prevValue]});
+    setIputText('');
+  }
+
+  const funClick = (event) => {
+    setItems(Items.filter((value, index) => (index).toString() !== event.target.id))
   }
 
 
@@ -21,7 +26,7 @@ function App() {
         <h1>To-Do List</h1>
       </div>
       <div className="form">
-        <input type="text" onChange={onChange} />
+        <input type="text" onChange={onChange} value={InputText}/>
         <button onClick={addItem}>
           <span>Add</span>
         </button>
@@ -29,11 +34,7 @@ function App() {
       <div>
         <ul>
         {
-          Items.map(item => {
-          if (item !== "")
-            return <TodoList todo={item} />;
-          return <></>
-          })
+          Items.map((item, index) => <TodoList key={index} id={index} todo={item} funcClick={funClick} />)
         }
         </ul>
       </div>
