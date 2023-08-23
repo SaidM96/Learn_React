@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TodoList from "./TodoList";
+import InputArea from "./InputArea";
 
 function App() {
 
@@ -19,18 +20,12 @@ function App() {
     setItems(Items.filter((value, index) => index !== id))
   }
 
-
   return (
     <div className="container">
       <div className="heading">
         <h1>To-Do List</h1>
       </div>
-      <div className="form">
-        <input type="text" onChange={onChange} value={InputText}/>
-        <button onClick={addItem}>
-          <span>Add</span>
-        </button>
-      </div>
+          <InputArea onChange={onChange} InputText={InputText} addItem={addItem} />
       <div>
         <ul>
         {

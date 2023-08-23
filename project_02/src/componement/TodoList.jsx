@@ -1,8 +1,5 @@
 import { useState } from "react";
 
-
-
-
 function TodoList(props){
     const [finishTodo, setTodoFinish] = useState(false);
     const change = () => {
