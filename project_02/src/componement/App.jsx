@@ -4,16 +4,18 @@ import InputArea from "./InputArea";
 
 function App() {
 
-  const [Items ,setItems] = useState([]);
   const [InputText ,setIputText] = useState("");
+  const [Items ,setItems] = useState([]);
 
   function onChange(event){
     setIputText(event.target.value);
   }
 
-  function addItem(){
+  function addItem(event){
+    event.preventDefault();
     if (InputText !== "") setItems(prevValue => {return [InputText,...prevValue]});
     setIputText('');
+    event.target.reset();
   }
 
   const funClick = (id) => {
