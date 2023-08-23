@@ -7,34 +7,43 @@ function App() {
     email: ""
   });
 
-  function change(event) {
+  //first methode
+
+  // function change(event) {
+  //   const { name, value } = event.target;
+  //   switch (name) {
+  //     case "fName":
+  //       setContact({
+  //         fName: value,
+  //         lName: contact.lName,
+  //         email: contact.email
+  //       });
+  //       break;
+  //     case "lName":
+  //       setContact({
+  //         fName: contact.fName,
+  //         lName: value,
+  //         email: contact.email
+  //       });
+  //       break;
+  //     case "email":
+  //       setContact({
+  //         fName: contact.fName,
+  //         lName: contact.lName,
+  //         email: value
+  //       });
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
+
+  // optimised method
+ function change(event){
     const { name, value } = event.target;
-    switch (name) {
-      case "fName":
-        setContact({
-          fName: value,
-          lName: contact.lName,
-          email: contact.email
-        });
-        break;
-      case "lName":
-        setContact({
-          fName: contact.fName,
-          lName: value,
-          email: contact.email
-        });
-        break;
-      case "email":
-        setContact({
-          fName: contact.fName,
-          lName: contact.lName,
-          email: value
-        });
-        break;
-      default:
-        break;
-    }
-  }
+    setContact(prevValue => ({...prevValue, [name]: value}));
+ }
+
   return (
     <div className="container">
       <h1>
