@@ -7,11 +7,11 @@ function App() {
   const [InputText ,setIputText] = useState("");
 
   function onChange(event){
-    if (event.target.value !== "") setIputText(event.target.value);
+    setIputText(event.target.value);
   }
 
   function addItem(){
-    setItems(prevValue => {return [InputText,...prevValue]});
+    if (InputText !== "") setItems(prevValue => {return [InputText,...prevValue]});
     setIputText('');
   }
 
