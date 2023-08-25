@@ -21,6 +21,10 @@ function App() {
     setNotes(Notes.filter((item, index) => index !== id))
   }
 
+  const updateNote = (id) => {
+
+  }
+
   const Additem = (e) => {
     e.preventDefault();
     if (InputNote.title !== "" && InputNote.content !== "") setNotes(prevValue => [InputNote, ...prevValue]);
@@ -32,7 +36,7 @@ function App() {
       <Header />
       <CreateArea changeInput={onChangeInpput} addItem={Additem} value={InputNote} />
       {
-        Notes.map((item, index) => <Note  key={index} id={index} title={item.title} content={item.content} deleteNote={deleteNote}  />)
+        Notes.map((item, index) => <Note  key={index} id={index} title={item.title} content={item.content} updateNote={updateNote} deleteNote={deleteNote}  />)
       }
       <Footer />
     </div>
